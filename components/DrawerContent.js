@@ -3,6 +3,8 @@ import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
 import { DrawerActions } from 'react-navigation';
 
+import LanguageDrawer from './LanguageDrawer'
+
 export default class DrawerScreen extends Component {
     navigateToScreen = (route) => () => {
         const navigateAction = NavigationActions.navigate({
@@ -29,19 +31,11 @@ export default class DrawerScreen extends Component {
                         </View>
                     </View>
                     <Text style={{ fontSize: 20, marginLeft: 20, marginTop: 30, marginBottom: 10, }}>Languages</Text>
-                    <TouchableOpacity
-                        onPress={() => console.log('dddd')}
-                        style={{ marginLeft: 5}}
-                    >
+                    <LanguageDrawer />
+                    <LanguageDrawer />
+                    <LanguageDrawer />
+                    <LanguageDrawer />
 
-                        <View style={{ flexDirection: 'row', alignItems: 'center'}}>
-                            <Image
-                                source={require('../assets/flags/ar.png')}
-                                style={{width: 25, height: 25}}
-                            />
-                            <Text style={{marginLeft: 10, fontSize: 17}}>Arabic / عربي</Text>
-                        </View>
-                    </TouchableOpacity>
                 </ScrollView>
             </View>
         );
