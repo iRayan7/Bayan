@@ -60,32 +60,7 @@ const data = [
 ]
 export default class Main extends Component {
 
-    static navigationOptions = () => {
-        return {
-            headerTitle: <Image source={require('../assets/logo@2.png')} style={{width: 50, height: 36}} />,
 
-            // headerRight: (
-            //     <TouchableOpacity
-            //         style={{marginRight: 25, flexDirection: 'row', alignItems: 'center'}}
-            //         onPress={() => console.log('dd')}
-            //         hitSlop={{top: 20, left: 50, bottom: 20, right: 50}}
-            //     >
-            //         <Entypo name={'map'} size={24} color={'#9E2992'}/>
-            //     </TouchableOpacity>
-            // ),
-            headerLeft: (
-                <TouchableOpacity
-                    style={{paddingLeft: 25, flexDirection: 'row', alignItems: 'center'}}
-                    onPress={() => console.log('dd')}
-                    hitSlop={{top: 20, left: 50, bottom: 20, right: 50}}
-                >
-                    <Ionicons name={'ios-menu'} size={30} color={'#2FBF82'}/>
-                </TouchableOpacity>
-            ),
-        }
-
-
-    };
 
     renderSeparator = () => {
         return (
