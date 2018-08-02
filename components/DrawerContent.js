@@ -28,14 +28,11 @@ export default class DrawerScreen extends Component {
                         {/*</View>*/}
                         <View style={Styles.profileText}>
                             <Text style={{
-                                fontSize: 24, fontWeight: 'bold', color: '#fff', fontFamily: 'ubuntu'
+                                fontSize: 24, fontWeight: 'bold', color: '#515152', fontFamily: 'ubuntu'
                             }}>Osama Aloqaily</Text>
                             <Text style={{
-                                fontSize: 17, color: '#fff', fontFamily: 'ubuntu'
+                                fontSize: 17, color: '#515152', fontFamily: 'ubuntu'
                             }}>Organizer</Text>
-
-                            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#515152'}}>OSAMA ALOQAILY</Text>
-                            <Text style={{ fontSize: 14, color: '#515152'}}>Organizer</Text>
                         </View>
                     </View>
                     <Text style={{ fontSize: 16, marginLeft: 20, marginTop: 30, marginBottom: 10, color: '#515152', marginBottom: 10, fontWeight: 'bold' }}>Languages You Speak:</Text>

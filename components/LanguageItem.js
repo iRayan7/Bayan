@@ -1,7 +1,66 @@
 import React, {Component} from 'react';
-import {View, TouchableOpacity, Dimensions, Image, Text, TouchableWithoutFeedback, TouchableHighlight} from 'react-native';
+import {
+    View,
+    TouchableOpacity,
+    Dimensions,
+    Image,
+    Text,
+    TouchableWithoutFeedback,
+    TouchableHighlight
+} from 'react-native';
 
 var {height, width} = Dimensions.get('window');
+
+
+let flags = {
+    ar: require('../assets/flags/128x128/ar.png'),
+    sa: require('../assets/flags/128x128/sa.png'),
+    us: require('../assets/flags/128x128/us.png'),
+    af: require('../assets/flags/128x128/af.png'),
+    pk: require('../assets/flags/128x128/pk.png'),
+    id: require('../assets/flags/128x128/id.png'),
+    bd: require('../assets/flags/128x128/bd.png'),
+    ir: require('../assets/flags/128x128/ir.png'),
+    tr: require('../assets/flags/128x128/tr.png'),
+    uz: require('../assets/flags/128x128/uz.png'),
+    sa: require('../assets/flags/128x128/sa.png'),
+    af: require('../assets/flags/128x128/af.png'),
+    pk: require('../assets/flags/128x128/pk.png'),
+    id: require('../assets/flags/128x128/id.png'),
+    bd: require('../assets/flags/128x128/bd.png'),
+    ir: require('../assets/flags/128x128/ir.png'),
+    tr: require('../assets/flags/128x128/tr.png'),
+    uz: require('../assets/flags/128x128/uz.png'),
+    kz: require('../assets/flags/128x128/kz.png'),
+    fr: require('../assets/flags/128x128/fr.png'),
+    es: require('../assets/flags/128x128/es.png'),
+    az: require('../assets/flags/128x128/az.png'),
+    tj: require('../assets/flags/128x128/tj.png'),
+    kg: require('../assets/flags/128x128/kg.png'),
+    ru: require('../assets/flags/128x128/ru.png'),
+    tm: require('../assets/flags/128x128/tm.png'),
+    al: require('../assets/flags/128x128/al.png'),
+    rs: require('../assets/flags/128x128/rs.png'),
+    ba: require('../assets/flags/128x128/ba.png'),
+    sa: require('../assets/flags/128x128/sa.png'),
+    af: require('../assets/flags/128x128/af.png'),
+    pk: require('../assets/flags/128x128/pk.png'),
+    id: require('../assets/flags/128x128/id.png'),
+    bd: require('../assets/flags/128x128/bd.png'),
+    ir: require('../assets/flags/128x128/ir.png'),
+    tr: require('../assets/flags/128x128/tr.png'),
+    uz: require('../assets/flags/128x128/uz.png'),
+    fr: require('../assets/flags/128x128/fr.png'),
+    az: require('../assets/flags/128x128/az.png'),
+    tj: require('../assets/flags/128x128/tj.png'),
+    kg: require('../assets/flags/128x128/kg.png'),
+    ru: require('../assets/flags/128x128/ru.png'),
+    tm: require('../assets/flags/128x128/tm.png'),
+    al: require('../assets/flags/128x128/al.png'),
+    rs: require('../assets/flags/128x128/rs.png'),
+    ba: require('../assets/flags/128x128/ba.png'),
+    hr: require('../assets/flags/128x128/hr.png'),
+}
 
 export default class LanguageItem extends Component {
 
@@ -10,15 +69,20 @@ export default class LanguageItem extends Component {
     }
 
     render() {
+
+        const flag = flags[this.props.flag];
+        // const flag = this.props.flag;
         return (
             <View style={Styles.item}>
                 <TouchableHighlight
                     onPress={this.props.onPress}
-                    style={{ flex: 1, borderRadius: 51,}}
+                    style={{flex: 1, borderRadius: 51,}}
                     underlayColor={'rgba(150,150,150,0.7)'}
                 >
-                    <View style={{ flex:1, flexDirection: 'row'}}>
-                        <Image source={require('../assets/flags/ar.png')} style={Styles.img}/>
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={Styles.imgView}>
+                            <Image source={flag} style={Styles.img} resideMode={'cover'}/>
+                        </View>
                         <Text style={Styles.title}>{this.props.name}</Text>
                     </View>
                 </TouchableHighlight>
@@ -39,11 +103,20 @@ const Styles = {
         alignItems: 'center'
     },
     img: {
-        width: 40,
-        height: 40,
+        width: 60,
+        height: 60,
         // alignSelf: 'flex-start',
         // marginLeft: 5,
+        // borderRadius: 75
 
+
+    },
+    imgView: {
+        // borderRadius: 50,
+        width: 50,
+        height: 50,
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start'
 
     },
     title: {

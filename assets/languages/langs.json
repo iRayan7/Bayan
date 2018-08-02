@@ -1,0 +1,111 @@
+{
+    "ar": {
+        "name": "Arabic",
+        "native": "العربية",
+        "rtl": 1,
+        "flag": "sa"
+    },
+    "en": {
+        "name": "English",
+        "native": "English",
+        "flag": "us"
+    },
+    "ps": {
+        "name": "Pashto",
+        "native": "پښتو",
+        "rtl": 1,
+        "flag": "af"
+    },
+    "ur": {
+        "name": "Urdu",
+        "native": "اردو",
+        "rtl": 1,
+        "flag": "pk"
+    },
+    "id": {
+        "name": "Indonesian",
+        "native": "Bahasa Indonesia",
+        "flag": "id"
+    },
+    "bn": {
+        "name": "Bengali",
+        "native": "বাংলা",
+        "flag": "bd"
+    },
+    "fa": {
+        "name": "Persian",
+        "native": "فارسی",
+        "rtl": 1,
+        "flag": "ir"
+    },
+    "tr": {
+        "name": "Turkish",
+        "native": "Türkçe",
+        "flag": "tr"
+    },
+    "uz": {
+        "name": "Uzbek",
+        "native": "Ўзбек",
+        "flag": "uz"
+    },
+    "kk": {
+        "name": "Kazakh",
+        "native": "Қазақша",
+        "flag": "kz"
+    },
+    "fr": {
+        "name": "French",
+        "native": "Français",
+        "flag": "fr"
+    },
+    "es": {
+        "name": "Spanish",
+        "native": "Español",
+        "flag": "es"
+    },
+    "az": {
+        "name": "Azerbaijani",
+        "native": "Azərbaycanca / آذربايجان",
+        "flag": "az"
+    },
+    "tg": {
+        "name": "Tajik",
+        "native": "Тоҷикӣ",
+        "flag": "tj"
+    },
+    "ky": {
+        "name": "Kirghiz",
+        "native": "Kırgızca / Кыргызча",
+        "flag": "kg"
+    },
+    "ru": {
+        "name": "Russian",
+        "native": "Русский",
+        "flag": "ru"
+    },
+    "tk": {
+        "name": "Turkmen",
+        "native": "Туркмен / تركمن",
+        "flag": "tm"
+    },
+    "sq": {
+        "name": "Albanian",
+        "native": "Shqip",
+        "flag": "al"
+    },
+    "sr": {
+        "name": "Serbian",
+        "native": "Српски",
+        "flag": "rs"
+    },
+    "bs": {
+        "name": "Bosnian",
+        "native": "Bosanski",
+        "flag": "ba"
+    },
+    "hr": {
+        "name": "Croatian",
+        "native": "Hrvatski",
+        "flag":"hr"
+    }
+}

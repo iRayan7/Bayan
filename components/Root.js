@@ -12,12 +12,13 @@ import {Ionicons, Entypo} from '@expo/vector-icons'
 import Main from '../screens/Main'
 import Login from '../screens/Login'
 import Volunteer from '../screens/Volunteer'
+import Rating from '../screens/Rating'
 
 export default class Root extends React.Component {
     render() {
         return (
 
-            <PrimaryNav />
+            <PrimaryNav/>
         );
     }
 }
@@ -54,7 +55,9 @@ const MainStack = createStackNavigator({
                 headerLeft: (
                     <TouchableOpacity
                         style={{paddingLeft: 25, flexDirection: 'row', alignItems: 'center'}}
-                        onPress={() => {navigation.dispatch(DrawerActions.toggleDrawer())}}
+                        onPress={() => {
+                            navigation.dispatch(DrawerActions.toggleDrawer())
+                        }}
                         hitSlop={{top: 20, left: 50, bottom: 20, right: 50}}
                     >
                         <Ionicons name={'ios-menu'} size={30} color={'#2FBF82'}/>
@@ -67,12 +70,12 @@ const MainStack = createStackNavigator({
 
 // login stack
 const LoginStack = createStackNavigator({
-  loginScreen: { screen: Login },
+    loginScreen: {screen: Login},
 }, {
-  headerMode: 'float',
-  navigationOptions: {
-    title: 'Login'
-  }
+    headerMode: 'float',
+    navigationOptions: {
+        title: 'Login'
+    }
 })
 
 export const DrawerVolunteer = createDrawerNavigator({
@@ -89,6 +92,9 @@ export const DrawerVolunteer = createDrawerNavigator({
 const VolunteerStack = createStackNavigator({
         DrawerNavigator: {
             screen: DrawerVolunteer
+        },
+        RatingScreen: {
+            screen: Rating
         }
     }, {
         navigationOptions: ({navigation}) => {
@@ -107,25 +113,29 @@ const VolunteerStack = createStackNavigator({
                 headerLeft: (
                     <TouchableOpacity
                         style={{paddingLeft: 25, flexDirection: 'row', alignItems: 'center'}}
-                        onPress={() => {navigation.dispatch(DrawerActions.toggleDrawer())}}
+                        onPress={() => {
+                            navigation.dispatch(DrawerActions.toggleDrawer())
+                        }}
                         hitSlop={{top: 20, left: 50, bottom: 20, right: 50}}
                     >
                         <Ionicons name={'ios-menu'} size={30} color={'#2FBF82'}/>
                     </TouchableOpacity>
                 ),
             }
-        }
+        },
+        initialRouteName: 'RatingScreen',
+
     }
 )
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
-  loginStack: { screen: LoginStack },
-  mainStack: { screen: MainStack },
-  volunteerStack: { screen: VolunteerStack }
+    loginStack: {screen: LoginStack},
+    mainStack: {screen: MainStack},
+    volunteerStack: {screen: VolunteerStack}
 }, {
-  // Default config for all screens
-  headerMode: 'none',
-  title: 'Main',
-  initialRouteName: 'mainStack',
+    // Default config for all screens
+    headerMode: 'none',
+    title: 'Main',
+    initialRouteName: 'volunteerStack',
 })

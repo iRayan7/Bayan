@@ -7,6 +7,9 @@ import LanguageItem from '../components/LanguageItem'
 
 import {SearchBar} from 'react-native-elements'
 
+import AwesomeAlert from 'react-native-awesome-alerts'
+
+import Languages from '../assets/languages/languages'
 
 const data = [
     {
@@ -75,7 +78,7 @@ export default class Main extends Component {
     };
 
     searchedData = () => {
-        return data.filter(({name}) => {
+        return Languages.filter(({name}) => {
             if (name.trim().toLowerCase().includes(this.state.searchFieldText.toLowerCase()))
                 return true
         })
@@ -85,11 +88,49 @@ export default class Main extends Component {
         super(props);
 
         this.state = {
-            searchFieldText: ''
+            searchFieldText: '',
+
+            showAlert: false,
+            loading: false,
+            alertTitle: '',
+            langs: []
+
         }
     }
 
+
+    hideAlert = () => {
+        this.setState({
+            showAlert: false
+        });
+    };
+
+
+    renderAwesomeAlert() {
+        return (
+            <AwesomeAlert
+                show={this.state.showAlert}
+                showProgress={this.state.loading}
+                title={this.state.alertTitle}
+                closeOnTouchOutside={false}
+                closeOnHardwareBackPress={false}
+                showCancelButton={false}
+                showConfirmButton={true}
+                cancelText="Cancel"
+                confirmText="Cancel"
+                confirmButtonColor="#DD6B55"
+                onCancelPressed={() => {
+                    this.hideAlert();
+                }}
+                onConfirmPressed={() => {
+                    this.hideAlert();
+                }}
+            />
+        )
+    }
+
     render() {
+        console.log(Languages)
         return (
             <ImageBackground source={require('../assets/bg.jpg')} style={Styles.container}>
 
@@ -104,7 +145,8 @@ export default class Main extends Component {
                     }
                 }>
                     <SearchBar
-                        onChangeText={(text) => this.setState({searchFieldText: text})}
+                        // onChangeText={(text) => this.setState({searchFieldText: text})}
+                        onChangeText={(text) => console.log(this.state.langs)}
                         onClear={() => this.setState({searchFieldText: ''})}
                         placeholder='Search for a language...'
                         platform="ios"
@@ -112,15 +154,31 @@ export default class Main extends Component {
                     />
                     <FlatList
                         data={this.searchedData()}
-                        renderItem={({name, flag}) => <LanguageItem name={'nnnn'} flag={flag}/>}
+                        renderItem={
+
+                            ({item}) => {
+                                this.state.langs.push(item.flag);
+                                return <LanguageItem
+                                    name={item.name}
+                                    flag={item.flag}
+                                    onPress={() => this.setState({
+                                        showAlert: true,
+                                        loading: true,
+                                        alertTitle: 'Looking for translator...'
+                                    })}
+                                />
+                            }
+                        }
                         ItemSeparatorComponent={this.renderSeparator}
-                        keyExtractor={(item) => item.key}
+                        keyExtractor={(item) => item.flag}
                         contentContainerStyle={{paddingVertical: 40}}
                         showsVerticalScrollIndicator={false}
                     />
                     {/*<LanguageItem />*/}
 
                 </View>
+
+                {this.renderAwesomeAlert()}
 
 
             </ImageBackground>
