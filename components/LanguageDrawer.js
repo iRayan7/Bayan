@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {View, Text, TouchableOpacity, Image} from 'react-native'
 
-
 import { EvilIcons} from '@expo/vector-icons';
 
 export default class LanguageDrawer extends Component {
@@ -32,10 +31,10 @@ export default class LanguageDrawer extends Component {
                             marginLeft: 10,
                             fontSize: 17,
                             fontWeight: this.state.checked? 'bold' : 'normal',
-                            color: '#fff'
+                            color: '#515152'
                         }
                     }>Arabic / عربي</Text>
-                    {this.state.checked? <EvilIcons name={'check'} size={24} color={'#fff'}/> : null}
+                    {this.state.checked? <EvilIcons name={'check'} size={24} color={'#515152'}/> : null}
                 </View>
             </TouchableOpacity>
         )
