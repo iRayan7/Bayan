@@ -32,7 +32,9 @@ export default class LanguageDrawer extends Component {
                             marginLeft: 10,
                             fontSize: 17,
                             fontWeight: this.state.checked? 'bold' : 'normal',
-                            color: '#fff'
+                            color: '#fff',
+                            fontFamily: 'ubuntu'
+
                         }
                     }>Arabic / عربي</Text>
                     {this.state.checked? <EvilIcons name={'check'} size={24} color={'#fff'}/> : null}

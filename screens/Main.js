@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {View, Text, FlatList, ImageBackground, TouchableOpacity, Image} from 'react-native';
 
-import { Ionicons, Entypo } from '@expo/vector-icons';
+import {Ionicons, Entypo} from '@expo/vector-icons';
 
 import LanguageItem from '../components/LanguageItem'
+
+import {SearchBar} from 'react-native-elements'
 
 
 const data = [
@@ -61,25 +63,37 @@ const data = [
 export default class Main extends Component {
 
 
-
     renderSeparator = () => {
         return (
             <View
                 style={{
-                    height: 30,
+                    height: 15,
                     width: "100%",
                 }}
             />
         );
     };
 
+    searchedData = () => {
+        return data.filter(({name}) => {
+            if (name.trim().toLowerCase().includes(this.state.searchFieldText.toLowerCase()))
+                return true
+        })
+    }
+
     constructor(props) {
         super(props);
+
+        this.state = {
+            searchFieldText: ''
+        }
     }
 
     render() {
         return (
             <ImageBackground source={require('../assets/bg.jpg')} style={Styles.container}>
+
+
                 <View style={
                     {
                         flex: 1,
@@ -89,9 +103,16 @@ export default class Main extends Component {
                         alignItems: 'center'
                     }
                 }>
+                    <SearchBar
+                        onChangeText={(text) => this.setState({searchFieldText: text})}
+                        onClear={() => this.setState({searchFieldText: ''})}
+                        placeholder='Search for a language...'
+                        platform="ios"
+
+                    />
                     <FlatList
-                        data={data}
-                        renderItem={(item) => <LanguageItem name={item.name} flag={item.flag}/>}
+                        data={this.searchedData()}
+                        renderItem={({name, flag}) => <LanguageItem name={'nnnn'} flag={flag}/>}
                         ItemSeparatorComponent={this.renderSeparator}
                         keyExtractor={(item) => item.key}
                         contentContainerStyle={{paddingVertical: 40}}

@@ -13,13 +13,13 @@ export default class LanguageItem extends Component {
         return (
             <View style={Styles.item}>
                 <TouchableHighlight
-                    onPress={() => console.log('djhkjdh')}
+                    onPress={this.props.onPress}
                     style={{ flex: 1, borderRadius: 51,}}
                     underlayColor={'rgba(150,150,150,0.7)'}
                 >
                     <View style={{ flex:1, flexDirection: 'row'}}>
                         <Image source={require('../assets/flags/ar.png')} style={Styles.img}/>
-                        <Text style={Styles.title}>Arabic / عربي</Text>
+                        <Text style={Styles.title}>{this.props.name}</Text>
                     </View>
                 </TouchableHighlight>
 
@@ -30,25 +30,26 @@ export default class LanguageItem extends Component {
 
 const Styles = {
     item: {
-        backgroundColor: 'rgba(202,202,202,0.7)',
+        backgroundColor: 'rgba(202,202,202,0.5)',
         width: width * 0.85,
         borderRadius: 51,
-        height: 70,
+        height: 40,
         flexDirection: 'row',
         // justifyContent: 'center',
         alignItems: 'center'
     },
     img: {
-        width: 70,
-        height: 70,
+        width: 40,
+        height: 40,
         // alignSelf: 'flex-start',
         // marginLeft: 5,
 
 
     },
     title: {
-        fontSize: 25,
+        fontSize: 15,
         alignSelf: 'center',
         marginLeft: 20,
+        fontFamily: 'ubuntu'
     }
 }
