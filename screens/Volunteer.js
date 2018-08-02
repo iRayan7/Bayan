@@ -29,7 +29,12 @@ export default class Volunteer extends Component {
                     }
                 }>
 
-                    <Text style={{color: '#bcbcbc'}}>Choose language preferences..</Text>
+                    <Text style={
+                        {
+                            color: '#bcbcbc',
+                            fontFamily: 'ubuntu'
+                        }
+                    }>Choose language preferences..</Text>
                     <LinearGradient
                         colors={['#21b470', '#059ebd']}
                         start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
@@ -54,15 +59,29 @@ export default class Volunteer extends Component {
 
                             {this.state.isOnline
                                 ? <Feather name='x-circle' size={26} style={{marginRight: 10, color: '#d13739'}}/>
-                                : <Entypo name='arrow-with-circle-right' size={26} style={{marginRight: 10, color: '#5cad5e'}}/>
+                                : <Entypo name='arrow-with-circle-right' size={26}
+                                          style={{marginRight: 10, color: '#5cad5e'}}/>
                             }
-                            <Text style={{fontSize: 22, fontWeight: 'bold', color: '#0a98c2'}}>GO {this.state.isOnline? 'OFFLINE' : 'ONLINE'}</Text>
+                            <Text style={{
+                                fontSize: 22,
+                                fontWeight: 'bold',
+                                color: '#0a98c2',
+                                fontFamily: 'ubuntu'
+                            }}>GO {this.state.isOnline ? 'OFFLINE' : 'ONLINE'}</Text>
                         </TouchableOpacity>
                     </LinearGradient>
-                    <Text style={{color: '#bcbcbc'}}>Status:
+                    <Text style={
+                        {
+                            color: '#bcbcbc', fontFamily: 'ubuntu'
+                        }
+                    }>Status:
                         {this.state.isOnline
-                            ? <Text style={{color: '#5cad5e', fontWeight: 'bold'}}>ONLINE</Text>
-                            : <Text style={{color: '#d13739', fontWeight: 'bold'}}>OFFLINE</Text>
+                            ? <Text style={{
+                                color: '#5cad5e', fontWeight: 'bold', fontFamily: 'ubuntu'
+                            }}>ONLINE</Text>
+                            : <Text style={{
+                                color: '#d13739', fontWeight: 'bold', fontFamily: 'ubuntu'
+                            }}>OFFLINE</Text>
                         }
                     </Text>
 

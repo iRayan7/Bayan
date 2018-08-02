@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
-import { DrawerActions } from 'react-navigation';
+import {DrawerActions} from 'react-navigation';
+
 import LanguageDrawer from './LanguageDrawer'
 
 export default class DrawerScreen extends Component {
@@ -13,18 +14,26 @@ export default class DrawerScreen extends Component {
         this.props.navigation.dispatch(DrawerActions.closeDrawer())
     }
 
-    render () {
+    render() {
         return (
+
             <View style={{ flex: 1, backgroundColor: 'white'}}>
                 <ScrollView style={{ flex:1}}>
                     <View style={Styles.profile}>
                         {/*<View style={Styles.profilePic}>*/}
-                            <Image
-                                source={require('../assets/user.jpeg')}
-                                style={{ width: 60, height: 60, borderRadius: 31}}
-                            />
+                        <Image
+                            source={require('../assets/user.jpeg')}
+                            style={{width: 60, height: 60, borderRadius: 31}}
+                        />
                         {/*</View>*/}
                         <View style={Styles.profileText}>
+                            <Text style={{
+                                fontSize: 24, fontWeight: 'bold', color: '#fff', fontFamily: 'ubuntu'
+                            }}>Osama Aloqaily</Text>
+                            <Text style={{
+                                fontSize: 17, color: '#fff', fontFamily: 'ubuntu'
+                            }}>Organizer</Text>
+
                             <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#515152'}}>OSAMA ALOQAILY</Text>
                             <Text style={{ fontSize: 14, color: '#515152'}}>Organizer</Text>
                         </View>

@@ -17,7 +17,7 @@ export default class Root extends React.Component {
     render() {
         return (
 
-            <PrimaryNav/>
+            <PrimaryNav />
         );
     }
 }
@@ -127,5 +127,5 @@ const PrimaryNav = createStackNavigator({
   // Default config for all screens
   headerMode: 'none',
   title: 'Main',
-  initialRouteName: 'loginStack',
+  initialRouteName: 'mainStack',
 })

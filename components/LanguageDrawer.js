@@ -31,6 +31,8 @@ export default class LanguageDrawer extends Component {
                             marginLeft: 10,
                             fontSize: 17,
                             fontWeight: this.state.checked? 'bold' : 'normal',
+                            fontFamily: 'ubuntu',
+                            color: '#fff',
                             color: '#515152'
                         }
                     }>Arabic / عربي</Text>
