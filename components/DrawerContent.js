@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
 import {DrawerActions} from 'react-navigation';
-
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 import LanguageDrawer from './LanguageDrawer'
 
 export default class DrawerScreen extends Component {
@@ -43,8 +43,16 @@ export default class DrawerScreen extends Component {
                     <LanguageDrawer />
                     <LanguageDrawer />
                     <LanguageDrawer />
-
                 </ScrollView>
+                <TouchableOpacity
+                  style={{ position: 'absolute', bottom: 15, right: 15, flexDirection: 'row' }}
+                  onPress={() => {
+                    this.props.navigation.navigate('loginStack')
+                  }}
+                >
+                  <MaterialCommunityIcons name='logout' style={{marginRight: 5, color: 'red'}}/>
+                  <Text style={{ color: 'red' }}>LOGOUT</Text>
+                </TouchableOpacity>
             </View>
         );
     }
