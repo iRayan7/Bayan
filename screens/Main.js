@@ -118,7 +118,6 @@ export default class Main extends Component {
                         contentContainerStyle={{paddingVertical: 40}}
                         showsVerticalScrollIndicator={false}
                     />
-
                     {/*<LanguageItem />*/}
 
                 </View>

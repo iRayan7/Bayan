@@ -16,8 +16,9 @@ export default class DrawerScreen extends Component {
 
     render() {
         return (
-            <View style={{flex: 1, backgroundColor: '#515352'}}>
-                <ScrollView style={{flex: 1}}>
+
+            <View style={{ flex: 1, backgroundColor: 'white'}}>
+                <ScrollView style={{ flex:1}}>
                     <View style={Styles.profile}>
                         {/*<View style={Styles.profilePic}>*/}
                         <Image
@@ -32,21 +33,16 @@ export default class DrawerScreen extends Component {
                             <Text style={{
                                 fontSize: 17, color: '#fff', fontFamily: 'ubuntu'
                             }}>Organizer</Text>
+
+                            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#515152'}}>OSAMA ALOQAILY</Text>
+                            <Text style={{ fontSize: 14, color: '#515152'}}>Organizer</Text>
                         </View>
                     </View>
-                    <Text style={{
-                        fontSize: 20,
-                        marginLeft: 20,
-                        marginTop: 30,
-                        marginBottom: 10,
-                        color: '#fff',
-                        fontFamily: 'ubuntu'
-
-                    }}>Languages</Text>
-                    <LanguageDrawer/>
-                    <LanguageDrawer/>
-                    <LanguageDrawer/>
-                    <LanguageDrawer/>
+                    <Text style={{ fontSize: 16, marginLeft: 20, marginTop: 30, marginBottom: 10, color: '#515152', marginBottom: 10, fontWeight: 'bold' }}>Languages You Speak:</Text>
+                    <LanguageDrawer />
+                    <LanguageDrawer />
+                    <LanguageDrawer />
+                    <LanguageDrawer />
 
                 </ScrollView>
             </View>
