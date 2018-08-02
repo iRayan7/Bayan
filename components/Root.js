@@ -16,6 +16,7 @@ import Rating from '../screens/Rating'
 
 export default class Root extends React.Component {
     render() {
+
         return (
 
             <PrimaryNav/>
