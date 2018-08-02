@@ -3,6 +3,7 @@ import { View, ImageBackground, Image, TouchableOpacity, Text } from 'react-nati
 import { TextField } from 'react-native-material-textfield';
 import {LinearGradient} from 'expo';
 import {Ionicons, MaterialCommunityIcons, Feather} from '@expo/vector-icons';
+import firebase from 'firebase';
 
 export default class Login extends Component {
 
@@ -10,6 +11,17 @@ export default class Login extends Component {
     email: '',
     password: '',
     role: 'volunteer'
+  }
+
+  componentDidMount() {
+    firebase.initializeApp({
+      apiKey: "AIzaSyDWQvWiXb305xOqg4HD89y8KLyos40Ymws",
+      authDomain: "bayan-bffd3.firebaseapp.com",
+      databaseURL: "https://bayan-bffd3.firebaseio.com",
+      projectId: "bayan-bffd3",
+      storageBucket: "bayan-bffd3.appspot.com",
+      messagingSenderId: "365112610799"
+    });
   }
 
   render() {
