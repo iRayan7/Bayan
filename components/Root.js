@@ -7,30 +7,25 @@ import {
     createDrawerNavigator,
     DrawerActions
 } from 'react-navigation';
-
 import DrawerScreen from '../components/DrawerContent'
-
-import {Ionicons, Entypo} from '@expo/vector-icons';
-
-
+import {Ionicons, Entypo} from '@expo/vector-icons'
 import Main from '../screens/Main'
+import Login from '../screens/Login'
 import Volunteer from '../screens/Volunteer'
 
 export default class Root extends React.Component {
-
-
     render() {
         return (
 
-            <VolunteerStack />
-            )
+            <PrimaryNav/>
+        );
     }
 }
 
 export const DrawerMain = createDrawerNavigator({
     Home: {
-        screen: Main
-    }
+        screen: Main,
+    },
 }, {
     initialRouteName: 'Home',
     contentComponent: DrawerScreen,
@@ -42,6 +37,7 @@ const MainStack = createStackNavigator({
             screen: DrawerMain
         }
     }, {
+        headerMode: 'float',
         navigationOptions: ({navigation}) => {
             return {
                 headerTitle: <Image source={require('../assets/logo@2.png')} style={{width: 50, height: 36}}/>,
@@ -69,6 +65,15 @@ const MainStack = createStackNavigator({
     }
 )
 
+// login stack
+const LoginStack = createStackNavigator({
+  loginScreen: { screen: Login },
+}, {
+  headerMode: 'float',
+  navigationOptions: {
+    title: 'Login'
+  }
+})
 
 export const DrawerVolunteer = createDrawerNavigator({
     Volunteer: {
@@ -79,6 +84,7 @@ export const DrawerVolunteer = createDrawerNavigator({
     contentComponent: DrawerScreen,
     drawerWidth: 300
 });
+
 
 const VolunteerStack = createStackNavigator({
         DrawerNavigator: {
@@ -112,4 +118,14 @@ const VolunteerStack = createStackNavigator({
     }
 )
 
-
+// Manifest of possible screens
+const PrimaryNav = createStackNavigator({
+  loginStack: { screen: LoginStack },
+  mainStack: { screen: MainStack },
+  volunteerStack: { screen: VolunteerStack }
+}, {
+  // Default config for all screens
+  headerMode: 'none',
+  title: 'Main',
+  initialRouteName: 'loginStack',
+})
