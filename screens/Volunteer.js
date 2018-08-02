@@ -48,19 +48,21 @@ export default class Volunteer extends Component {
                     >
                         <TouchableOpacity
                             style={Styles.button}
-                            onPress={() => this.setState({inOnline: !this.state.isOnline})}
+                            onPress={() => this.setState({isOnline: !this.state.isOnline})}
+
                         >
+
                             {this.state.isOnline
                                 ? <Feather name='x-circle' size={26} style={{marginRight: 10, color: '#d13739'}}/>
                                 : <Entypo name='arrow-with-circle-right' size={26} style={{marginRight: 10, color: '#5cad5e'}}/>
                             }
-                            <Text style={{fontSize: 22, fontWeight: 'bold', color: '#0a98c2'}}>GO ONLINE</Text>
+                            <Text style={{fontSize: 22, fontWeight: 'bold', color: '#0a98c2'}}>GO {this.state.isOnline? 'OFFLINE' : 'ONLINE'}</Text>
                         </TouchableOpacity>
                     </LinearGradient>
                     <Text style={{color: '#bcbcbc'}}>Status:
                         {this.state.isOnline
-                            ? <Text style={{color: '#5cad5e'}}>ONLINE</Text>
-                            : <Text style={{color: '#d13739'}}>OFFLINE</Text>
+                            ? <Text style={{color: '#5cad5e', fontWeight: 'bold'}}>ONLINE</Text>
+                            : <Text style={{color: '#d13739', fontWeight: 'bold'}}>OFFLINE</Text>
                         }
                     </Text>
 
