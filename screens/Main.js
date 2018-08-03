@@ -171,7 +171,7 @@ export default class Main extends Component {
                         }
                         ItemSeparatorComponent={this.renderSeparator}
                         keyExtractor={(item) => item.flag}
-                        contentContainerStyle={{paddingVertical: 40}}
+                        contentContainerStyle={{paddingBottom: 40, paddingTop: 20}}
                         showsVerticalScrollIndicator={false}
                     />
                     {/*<LanguageItem />*/}

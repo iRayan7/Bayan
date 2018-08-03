@@ -124,7 +124,7 @@ const VolunteerStack = createStackNavigator({
                 ),
             }
         },
-        initialRouteName: 'RatingScreen',
+        initialRouteName: 'DrawerNavigator',
 
     }
 )
@@ -138,5 +138,5 @@ const PrimaryNav = createStackNavigator({
     // Default config for all screens
     headerMode: 'none',
     title: 'Main',
-    initialRouteName: 'volunteerStack',
+    initialRouteName: 'mainStack',
 })
