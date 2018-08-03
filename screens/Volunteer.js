@@ -5,14 +5,72 @@ import {LinearGradient} from 'expo';
 
 import {Ionicons, Entypo, Feather} from '@expo/vector-icons';
 
+import AwesomeAlert from 'react-native-awesome-alerts'
+
 export default class Volunteer extends Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
-            isOnline: true,
+            isOnline: false,
+
+            showAlert: false,
+            loading: false,
+            alertTitle: '',
         }
+    }
+
+    hideAlert = () => {
+        this.setState({
+            showAlert: false
+        });
+    };
+
+    onOnlinePressed() {
+        this.setState({isOnline: !this.state.isOnline});
+        var thiz = this;
+        setTimeout(function () {
+
+            if(thiz.state.isOnline === true) {
+                thiz.setState({
+                    showAlert: true,
+                    loading: true,
+                    alertTitle: 'New pilgrim in need!'
+                })
+            }
+
+
+
+
+        }, 5000);
+
+
+    }
+
+    renderAwesomeAlert() {
+        return (
+            <AwesomeAlert
+                show={this.state.showAlert}
+                showProgress={this.state.loading}
+                title={this.state.alertTitle}
+                closeOnTouchOutside={false}
+                closeOnHardwareBackPress={false}
+                showCancelButton={true}
+                showConfirmButton={true}
+                cancelText="Reject"
+                confirmText="Accept"
+                confirmButtonColor="#0a98c2"
+                cancelButtonColor="#c23f32"
+                onCancelPressed={() => {
+                    this.hideAlert();
+                }}
+                onConfirmPressed={() => {
+                    this.hideAlert();
+                    this.props.navigation.navigate('VideoVolunteerStack')
+                }}
+            />
+        )
     }
 
     render() {
@@ -53,7 +111,7 @@ export default class Volunteer extends Component {
                     >
                         <TouchableOpacity
                             style={Styles.button}
-                            onPress={() => this.setState({isOnline: !this.state.isOnline})}
+                            onPress={() => this.onOnlinePressed()}
 
                         >
 
@@ -65,7 +123,7 @@ export default class Volunteer extends Component {
                             <Text style={{
                                 fontSize: 22,
                                 fontWeight: 'bold',
-                                color: '#0a98c2',
+                                color: this.state.isOnline? '#c23f32' : '#0a98c2',
                                 fontFamily: 'ubuntu'
                             }}>GO {this.state.isOnline ? 'OFFLINE' : 'ONLINE'}</Text>
                         </TouchableOpacity>
@@ -86,6 +144,8 @@ export default class Volunteer extends Component {
                     </Text>
 
                 </View>
+
+                {this.renderAwesomeAlert()}
 
             </ImageBackground>
         )

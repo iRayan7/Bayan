@@ -12,60 +12,27 @@ import AwesomeAlert from 'react-native-awesome-alerts'
 import Languages from '../assets/languages/languages'
 var {height, width} = Dimensions.get('window');
 
-const data = [
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '1'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '2'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '3'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '4'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '5'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '6'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '7'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '8'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '9'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '10'
-    }
-]
+
 export default class Main extends Component {
 
+    // static navigationOptions = () => {
+    //     return {
+    //         headerTitle: <Image source={require('../assets/logo@2.png')} style={{width: 50, height: 36}}/>,
+    //         headerLeft: (
+    //             <TouchableOpacity
+    //                 style={{paddingLeft: 25, flexDirection: 'row', alignItems: 'center'}}
+    //                 onPress={() => this.props.navigation.navigate('RatingStack') }
+    //                 hitSlop={{top: 20, left: 50, bottom: 20, right: 50}}
+    //             >
+    //                 <Ionicons name={'ios-arrow-back'} size={24} color={'#2FBF82'}/>
+    //             </TouchableOpacity>
+    //         ),
+    //         gesturesEnabled: true,
+    //
+    //     }
+    //
+    //
+    // }
 
     renderSeparator = () => {
         return (
@@ -130,6 +97,30 @@ export default class Main extends Component {
         )
     }
 
+    languagePressed() {
+
+
+        var thiz = this;
+        setTimeout(function () {
+
+            thiz.setState({
+                showAlert: true,
+                loading: true,
+                alertTitle: 'Looking for translator...'
+            })
+
+            setTimeout(function () {
+
+                thiz.hideAlert()
+                thiz.props.navigation.navigate('VideoOrgnizerStack');
+
+            }, 3000)
+
+
+        }, 100);
+
+    }
+
     render() {
         console.log(Languages)
         return (
@@ -144,8 +135,8 @@ export default class Main extends Component {
                     }
                 }>
                     <SearchBar
-                        // onChangeText={(text) => this.setState({searchFieldText: text})}
-                        onChangeText={(text) => console.log(this.state.langs)}
+                        onChangeText={(text) => this.setState({searchFieldText: text})}
+                        // onChangeText={(text) => console.log(this.state.langs)}
                         onClear={() => this.setState({searchFieldText: ''})}
                         placeholder='Search for a language...'
                         platform="ios"
@@ -161,11 +152,8 @@ export default class Main extends Component {
                                 return <LanguageItem
                                     name={item.name}
                                     flag={item.flag}
-                                    onPress={() => this.setState({
-                                        showAlert: true,
-                                        loading: true,
-                                        alertTitle: 'Looking for translator...'
-                                    })}
+                                    native={item.native}
+                                    onPress={() => this.languagePressed()}
                                 />
                             }
                         }

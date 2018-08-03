@@ -5,6 +5,8 @@ import {DrawerActions} from 'react-navigation';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import LanguageDrawer from './LanguageDrawer'
 
+import Languages from '../assets/languages/languages'
+
 export default class DrawerScreen extends Component {
     navigateToScreen = (route) => () => {
         const navigateAction = NavigationActions.navigate({
@@ -36,13 +38,13 @@ export default class DrawerScreen extends Component {
                         </View>
                     </View>
                     <Text style={{ fontSize: 16, marginLeft: 20, marginTop: 30, marginBottom: 10, color: '#515152', marginBottom: 10, fontWeight: 'bold' }}>Languages You Speak:</Text>
-                    <LanguageDrawer />
-                    <LanguageDrawer />
-                    <LanguageDrawer />
-                    <LanguageDrawer />
+
+                    {Languages.map( (lang) => {
+                        return <LanguageDrawer name={lang.name} native={lang.native} flag={lang.flag} key={lang.flag}/>
+                    })}
                 </ScrollView>
                 <TouchableOpacity
-                  style={{ position: 'absolute', bottom: 15, right: 15, flexDirection: 'row' }}
+                  style={{ position: 'absolute', bottom: 15, right: 15, flexDirection: 'row', backgroundColor: '#dddddd', padding: 4 }}
                   onPress={() => {
                     this.props.navigation.navigate('loginStack')
                   }}

@@ -14,9 +14,12 @@ import Login from '../screens/Login'
 import Volunteer from '../screens/Volunteer'
 import Rating from '../screens/Rating'
 import MainSign from '../screens/MainSign'
+import DrawerVolunteerScreen from '../components/DrawerVolunteer'
 
 
-import VideoCall from '../screens/VideoCall'
+
+import VideoCallVolunteer from '../screens/VideoCallVolunteer'
+import VideoCallOrgnizer from "../screens/VideoCallOrgnizer";
 
 export default class Root extends React.Component {
     render() {
@@ -41,9 +44,6 @@ export const DrawerMain = createDrawerNavigator({
 const MainStack = createStackNavigator({
         DrawerNavigator: {
             screen: DrawerMain
-        },
-        SignLang: {
-          screen: MainSign
         },
     }, {
         headerMode: 'float',
@@ -82,7 +82,7 @@ const LoginStack = createStackNavigator({
 }, {
     headerMode: 'float',
     navigationOptions: {
-        title: 'Login'
+        title: 'Login',
     }
 })
 
@@ -92,7 +92,7 @@ export const DrawerVolunteer = createDrawerNavigator({
     }
 }, {
     initialRouteName: 'Volunteer',
-    contentComponent: DrawerScreen,
+    contentComponent: DrawerVolunteerScreen,
     drawerWidth: 300
 });
 
@@ -101,9 +101,6 @@ const VolunteerStack = createStackNavigator({
         DrawerNavigator: {
             screen: DrawerVolunteer
         },
-        RatingScreen: {
-            screen: Rating
-        }
     }, {
         navigationOptions: ({navigation}) => {
             return {
@@ -140,11 +137,50 @@ const RatingStack = createStackNavigator({
     Rating: {screen: Rating}
 })
 
-const VideoCallStack = createStackNavigator ({
-    screen: VideoCall,
+const VideoCallVolunteerStack = createStackNavigator ({
+    screen: VideoCallVolunteer,
 }, {
     navigationOptions : {
         header: null,
+    }
+})
+
+const VideoCallOrgnizerStack = createStackNavigator ({
+    screen: VideoCallOrgnizer,
+}, {
+    navigationOptions : {
+        header: null,
+    }
+})
+
+const MainSignStack = createStackNavigator({
+    MainSign: {screen: MainSign}
+},  {
+    navigationOptions: ({navigation}) => {
+        return {
+            headerTitle: <Image source={require('../assets/logo@2.png')} style={{width: 50, height: 36}}/>,
+
+            // headerRight: (
+            //     <TouchableOpacity
+            //         style={{marginRight: 25, flexDirection: 'row', alignItems: 'center'}}
+            //         onPress={() => console.log('dd')}
+            //         hitSlop={{top: 20, left: 50, bottom: 20, right: 50}}
+            //     >
+            //         <Entypo name={'map'} size={24} color={'#9E2992'}/>
+            //     </TouchableOpacity>
+            // ),
+            headerLeft: (
+                <TouchableOpacity
+                    style={{paddingLeft: 25, flexDirection: 'row', alignItems: 'center'}}
+                    onPress={() => {
+                        navigation.navigate('mainStack');
+                    }}
+                    hitSlop={{top: 20, left: 50, bottom: 20, right: 50}}
+                >
+                    <Ionicons name={'ios-arrow-back'} size={30} color={'#2FBF82'}/>
+                </TouchableOpacity>
+            ),
+        }
     }
 })
 
@@ -153,12 +189,16 @@ const PrimaryNav = createStackNavigator({
     loginStack: {screen: LoginStack},
     mainStack: {screen: MainStack},
     volunteerStack: {screen: VolunteerStack},
-    VideoStack: {screen: VideoCallStack},
-    RatingStack: {screen: RatingStack}
+    VideoVolunteerStack: {screen: VideoCallVolunteerStack},
+    VideoOrgnizerStack: {screen: VideoCallOrgnizerStack},
+    RatingStack: {screen: RatingStack},
+    mainSignStack: {screen: MainSignStack}
 }, {
     // Default config for all screens
     headerMode: 'none',
     title: 'Main',
-
-    initialRouteName: 'mainStack',
+    initialRouteName: 'loginStack',
+    navigationOptions : {
+        gesturesEnabled: false,
+    }
 })

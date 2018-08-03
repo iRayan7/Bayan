@@ -12,58 +12,7 @@ import AwesomeAlert from 'react-native-awesome-alerts'
 import Languages from '../assets/languages/languages'
 var {height, width} = Dimensions.get('window');
 
-const data = [
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '1'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '2'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '3'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '4'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '5'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '6'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '7'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '8'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '9'
-    },
-    {
-        name: 'Arabic / عربي',
-        flag: 'ar',
-        key: '10'
-    }
-]
+
 export default class Main extends Component {
 
 
@@ -79,8 +28,9 @@ export default class Main extends Component {
     };
 
     searchedData = () => {
-        console.log(Languages)
+        console.log('lkjfdhksjhfjhkfjhsd',Languages)
         return Languages.filter(({name}) => {
+            console.log(name)
             if (name.trim().toLowerCase().includes(this.state.searchFieldText.toLowerCase()))
                 return true
         })
@@ -95,7 +45,6 @@ export default class Main extends Component {
             showAlert: false,
             loading: false,
             alertTitle: '',
-            langs: []
 
         }
     }
@@ -131,6 +80,30 @@ export default class Main extends Component {
         )
     }
 
+    languagePressed() {
+
+
+        var thiz = this;
+        setTimeout(function () {
+
+            thiz.setState({
+                showAlert: true,
+                loading: true,
+                alertTitle: 'Looking for translator...'
+            })
+
+            setTimeout(function () {
+
+                thiz.hideAlert()
+                thiz.props.navigation.navigate('VideoOrgnizerStack');
+
+            }, 3000)
+
+
+        }, 100);
+
+    }
+
     render() {
         console.log(Languages)
         return (
@@ -145,8 +118,8 @@ export default class Main extends Component {
                     }
                 }>
                     <SearchBar
-                        // onChangeText={(text) => this.setState({searchFieldText: text})}
-                        onChangeText={(text) => console.log(this.state.langs)}
+                        onChangeText={(text) => this.setState({searchFieldText: text})}
+                        // onChangeText={(text) => console.log(this.state.langs)}
                         onClear={() => this.setState({searchFieldText: ''})}
                         placeholder='Search for a language...'
                         platform="ios"
@@ -155,7 +128,7 @@ export default class Main extends Component {
 
                     <View style={Styles.item}>
                         <TouchableHighlight
-                            onPress={() => this.props.navigation.navigate('SignLang')}
+                            onPress={() => this.props.navigation.navigate('mainSignStack')}
                             style={{flex: 1, borderRadius: 51,}}
                             underlayColor={'rgba(150,150,150,0.7)'}
                         >
@@ -175,16 +148,11 @@ export default class Main extends Component {
                         renderItem={
 
                             ({item}) => {
-                                this.state.langs.push(item.flag);
                                 return <LanguageItem
                                     name={item.name}
                                     flag={item.flag}
                                     native={item.native}
-                                    onPress={() => this.setState({
-                                        showAlert: true,
-                                        loading: true,
-                                        alertTitle: 'Looking for translator...'
-                                    })}
+                                    onPress={() => this.languagePressed()}
                                 />
                             }
                         }
