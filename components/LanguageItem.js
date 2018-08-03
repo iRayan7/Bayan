@@ -14,7 +14,7 @@ var {height, width} = Dimensions.get('window');
 
 
 let flags = {
-    ar: require('../assets/flags/128x128/ar.png'),
+    sign: require('../assets/flags/128x128/sign.png'),
     sa: require('../assets/flags/128x128/sa.png'),
     us: require('../assets/flags/128x128/us.png'),
     af: require('../assets/flags/128x128/af.png'),

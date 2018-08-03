@@ -152,23 +152,6 @@ export default class Main extends Component {
 
                     />
 
-                    <View style={Styles.item}>
-                        <TouchableHighlight
-                            onPress={() => this.props.navigation.navigate('SignLang')}
-                            style={{flex: 1, borderRadius: 51,}}
-                            underlayColor={'rgba(150,150,150,0.7)'}
-                        >
-                            <View style={{flex: 1, flexDirection: 'row'}}>
-                                <View style={Styles.imgView}>
-                                  <ImageBackground source={require('../assets/flags/128x128/sign.png')} style={Styles.img}>
-                                  </ImageBackground>
-                                </View>
-                                <Text style={Styles.title}>Sign Languages</Text>
-                            </View>
-                        </TouchableHighlight>
-
-                    </View>
-
                     <FlatList
                         data={this.searchedData()}
                         renderItem={
@@ -188,7 +171,7 @@ export default class Main extends Component {
                         }
                         ItemSeparatorComponent={this.renderSeparator}
                         keyExtractor={(item) => item.flag}
-                        contentContainerStyle={{paddingBottom: 40, paddingTop: 5}}
+                        contentContainerStyle={{paddingBottom: 40, paddingTop: 20}}
                         showsVerticalScrollIndicator={false}
                     />
                     {/*<LanguageItem />*/}
@@ -220,8 +203,7 @@ const Styles = {
         height: 40,
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 20,
-        marginBottom: 20
+        marginTop: 20
     },
     img: {
         width: 80,

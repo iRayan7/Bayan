@@ -13,6 +13,8 @@ import Main from '../screens/Main'
 import Login from '../screens/Login'
 import Volunteer from '../screens/Volunteer'
 import Rating from '../screens/Rating'
+import MainSign from '../screens/MainSign'
+
 
 export default class Root extends React.Component {
     render() {
@@ -37,7 +39,10 @@ export const DrawerMain = createDrawerNavigator({
 const MainStack = createStackNavigator({
         DrawerNavigator: {
             screen: DrawerMain
-        }
+        },
+        SignLang: {
+          screen: MainSign
+        },
     }, {
         headerMode: 'float',
         navigationOptions: ({navigation}) => {
