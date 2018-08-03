@@ -14,6 +14,8 @@ import Login from '../screens/Login'
 import Volunteer from '../screens/Volunteer'
 import Rating from '../screens/Rating'
 
+import VideoCall from '../screens/VideoCall'
+
 export default class Root extends React.Component {
     render() {
 
@@ -124,19 +126,33 @@ const VolunteerStack = createStackNavigator({
                 ),
             }
         },
-        initialRouteName: 'RatingScreen',
+        initialRouteName: 'DrawerNavigator',
 
     }
 )
+
+const RatingStack = createStackNavigator({
+    Rating: {screen: Rating}
+})
+
+const VideoCallStack = createStackNavigator ({
+    screen: VideoCall,
+}, {
+    navigationOptions : {
+        header: null,
+    }
+})
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
     loginStack: {screen: LoginStack},
     mainStack: {screen: MainStack},
-    volunteerStack: {screen: VolunteerStack}
+    volunteerStack: {screen: VolunteerStack},
+    VideoStack: {screen: VideoCallStack},
+    RatingStack: {screen: RatingStack}
 }, {
     // Default config for all screens
     headerMode: 'none',
     title: 'Main',
-    initialRouteName: 'volunteerStack',
+    initialRouteName: 'VideoStack',
 })

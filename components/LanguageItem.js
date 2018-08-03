@@ -83,7 +83,7 @@ export default class LanguageItem extends Component {
                         <View style={Styles.imgView}>
                             <Image source={flag} style={Styles.img} resideMode={'cover'}/>
                         </View>
-                        <Text style={Styles.title}>{this.props.name}</Text>
+                        <Text style={Styles.titleName}>{this.props.name}</Text> <Text style={Styles.title}> / </Text> <Text style={Styles.title}>{this.props.native}</Text>
                     </View>
                 </TouchableHighlight>
 
@@ -119,10 +119,16 @@ const Styles = {
         alignItems: 'flex-start'
 
     },
-    title: {
+    titleName: {
         fontSize: 15,
         alignSelf: 'center',
         marginLeft: 20,
         fontFamily: 'ubuntu'
+    },
+    title: {
+        fontSize: 15,
+        alignSelf: 'center',
+        fontFamily: 'ubuntu'
     }
+
 }

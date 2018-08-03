@@ -78,6 +78,7 @@ export default class Main extends Component {
     };
 
     searchedData = () => {
+        console.log(Languages)
         return Languages.filter(({name}) => {
             if (name.trim().toLowerCase().includes(this.state.searchFieldText.toLowerCase()))
                 return true
@@ -161,6 +162,7 @@ export default class Main extends Component {
                                 return <LanguageItem
                                     name={item.name}
                                     flag={item.flag}
+                                    native={item.native}
                                     onPress={() => this.setState({
                                         showAlert: true,
                                         loading: true,
