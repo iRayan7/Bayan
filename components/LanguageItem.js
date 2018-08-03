@@ -6,14 +6,15 @@ import {
     Image,
     Text,
     TouchableWithoutFeedback,
-    TouchableHighlight
+    TouchableHighlight,
+    ImageBackground
 } from 'react-native';
 
 var {height, width} = Dimensions.get('window');
 
 
 let flags = {
-    ar: require('../assets/flags/128x128/ar.png'),
+    sign: require('../assets/flags/128x128/sign.png'),
     sa: require('../assets/flags/128x128/sa.png'),
     us: require('../assets/flags/128x128/us.png'),
     af: require('../assets/flags/128x128/af.png'),
@@ -81,7 +82,8 @@ export default class LanguageItem extends Component {
                 >
                     <View style={{flex: 1, flexDirection: 'row'}}>
                         <View style={Styles.imgView}>
-                            <Image source={flag} style={Styles.img} resideMode={'cover'}/>
+                          <ImageBackground source={flag} style={Styles.img}>
+                          </ImageBackground>
                         </View>
                         <Text style={Styles.titleName}>{this.props.name}</Text> <Text style={Styles.title}> / </Text> <Text style={Styles.title}>{this.props.native}</Text>
                     </View>
@@ -99,24 +101,25 @@ const Styles = {
         borderRadius: 51,
         height: 40,
         flexDirection: 'row',
-        // justifyContent: 'center',
         alignItems: 'center'
     },
     img: {
-        width: 60,
-        height: 60,
-        // alignSelf: 'flex-start',
-        // marginLeft: 5,
-        // borderRadius: 75
-
-
+        width: 80,
+        height: 80,
+        overflow: 'hidden',
+        position: 'absolute',
+        top: -12,
+        left: -14
     },
     imgView: {
-        // borderRadius: 50,
         width: 50,
         height: 50,
         justifyContent: 'flex-start',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        borderRadius: 50,
+        backgroundColor: '#000',
+        overflow: 'hidden',
+        top: -5
 
     },
     titleName: {
@@ -130,5 +133,4 @@ const Styles = {
         alignSelf: 'center',
         fontFamily: 'ubuntu'
     }
-
 }

@@ -1,10 +1,4 @@
 {
-    "ar": {
-        "name": "Arabic",
-        "native": "العربية",
-        "rtl": 1,
-        "flag": "sa"
-    },
     "en": {
         "name": "English",
         "native": "English",

@@ -3,9 +3,10 @@ import {
     View, Text, FlatList, ImageBackground,
     TouchableWithoutFeedback, TouchableOpacity, Image, TextInput, ScrollView
 } from 'react-native';
+import {LinearGradient} from 'expo';
 
 
-import {Ionicons, Entypo, Feather, EvilIcons, MaterialIcons} from '@expo/vector-icons';
+import {Ionicons, Entypo, Feather, EvilIcons, MaterialIcons, MaterialCommunityIcons} from '@expo/vector-icons';
 
 export default class Rating extends Component {
 
@@ -45,19 +46,30 @@ export default class Rating extends Component {
                             flex: 1,
                             // justifyContent: 'center',
                             // alignItems: 'center',
-                            paddingTop: '45%'
+                            paddingTop: '25%'
                         }
                     }>
-
+                        <MaterialCommunityIcons name='check-circle' size={100} style={{color: '#5cad5e', alignSelf: 'center'}}/>
                         <Text
                             style={{
-                                fontSize: 30,
+                                paddingTop: 10,
+                                paddingBottom: 5,
+                                fontSize: 24,
                                 fontFamily: 'ubuntu',
-                                color: '#0a98c2'
+                                color: '#2FBF82'
                             }}
                         >Thanks For Your Help!</Text>
 
-                        <Text>Please choose the reason of the previous call:</Text>
+                        <Text
+                        style={{
+                            fontFamily: 'ubuntu',
+                            color: '#515151',
+                            textAlign: 'center',
+                            paddingBottom: 10
+                        }}
+                        >
+                        What was the call about?
+                        </Text>
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'flex-start',
@@ -104,20 +116,20 @@ export default class Rating extends Component {
                                 >
                                     <MaterialIcons
                                         name={this.state.reason === 'lost' ? 'radio-button-checked' : 'radio-button-unchecked'}
-                                        size={30}
+                                        size={22}
                                         color={'#515152'}
                                         style={{marginBottom: 5, marginRight: 5}}
                                     />
                                     <Text style={
                                         {
-                                            fontSize: 24,
+                                            fontSize: 18,
                                             color: '#515152',
                                             fontWeight: this.state.reason === 'lost' ? 'bold' : 'normal',
                                         }
                                     }>Lost</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    onPress={() => this.setState({reason: 'health'})}
+                                    onPress={() => this.setState({reason: 'guideness'})}
                                     style={{
                                         flexDirection: 'row',
                                         borderLeftWidth: 0,
@@ -128,19 +140,19 @@ export default class Rating extends Component {
 
                                 >
                                     <MaterialIcons
-                                        name={this.state.reason === 'health' ? 'radio-button-checked' : 'radio-button-unchecked'}
-                                        size={30}
+                                        name={this.state.reason === 'guideness' ? 'radio-button-checked' : 'radio-button-unchecked'}
+                                        size={22}
                                         color={'#515152'}
                                         style={{marginBottom: 7, marginRight: 5}}
 
                                     />
                                     <Text style={
                                         {
-                                            fontSize: 24,
+                                            fontSize: 18,
                                             color: '#515152',
-                                            fontWeight: this.state.reason === 'health' ? 'bold' : 'normal'
+                                            fontWeight: this.state.reason === 'guideness' ? 'bold' : 'normal'
                                         }
-                                    }>Health</Text>
+                                    }>Guideness</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     onPress={() => this.setState({reason: 'other'})}
@@ -155,14 +167,14 @@ export default class Rating extends Component {
                                 >
                                     <MaterialIcons
                                         name={this.state.reason === 'other' ? 'radio-button-checked' : 'radio-button-unchecked'}
-                                        size={30}
+                                        size={22}
                                         color={'#515152'}
                                         style={{marginBottom: 0, marginRight: 5}}
 
                                     />
                                     <Text style={
                                         {
-                                            fontSize: 24,
+                                            fontSize: 18,
                                             color: '#515152',
                                             fontWeight: this.state.reason === 'other' ? 'bold' : 'normal',
                                             marginRight: 10,
@@ -201,32 +213,33 @@ export default class Rating extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-
-
-                        <TouchableOpacity
+                        <View style={{ flex: 1, alignItems: 'center' }}>
+                        <LinearGradient
+                            colors={['#21b470', '#059ebd']}
+                            start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
                             style={
                                 {
-                                    width: '100%',
-                                    backgroundColor: '#2FBF82',
-                                    height: 40,
+                                    height: 50,
+                                    width: 185,
                                     alignItems: 'center',
-                                    alignSelf: 'center',
                                     justifyContent: 'center',
-                                    borderRadius: 10,
+                                    borderRadius: 15,
+                                    marginVertical: 10,
 
                                 }
                             }
+
                         >
-                            <Text style={
-                                {
-                                    fontSize: 24,
-                                    color: '#fff',
+                            <TouchableOpacity
+                                style={Styles.button}
+                                onPress={() => this.props.navigation.navigate('DrawerNavigator')}
+                            >
+                                <MaterialCommunityIcons name='login-variant' size={26} style={{marginRight: 10, color: '#5cad5e'}}/>
+                                <Text style={{fontSize: 18, fontWeight: 'bold', color: '#0a98c2'}}>SUBMIT</Text>
+                            </TouchableOpacity>
+                        </LinearGradient>
 
-                                }
-                            }>Submit</Text>
-                        </TouchableOpacity>
-
-
+                        </View>
                     </ScrollView>
                 </View>
 
@@ -244,13 +257,12 @@ const Styles = {
         // paddingTop: 30,
     },
     button: {
-        width: 220,
+        width: 180,
         height: 45,
         borderRadius: 13.5,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
         flexDirection: 'row',
-
     }
 }

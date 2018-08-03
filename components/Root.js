@@ -13,6 +13,8 @@ import Main from '../screens/Main'
 import Login from '../screens/Login'
 import Volunteer from '../screens/Volunteer'
 import Rating from '../screens/Rating'
+import MainSign from '../screens/MainSign'
+
 
 import VideoCall from '../screens/VideoCall'
 
@@ -39,7 +41,10 @@ export const DrawerMain = createDrawerNavigator({
 const MainStack = createStackNavigator({
         DrawerNavigator: {
             screen: DrawerMain
-        }
+        },
+        SignLang: {
+          screen: MainSign
+        },
     }, {
         headerMode: 'float',
         navigationOptions: ({navigation}) => {
@@ -154,5 +159,6 @@ const PrimaryNav = createStackNavigator({
     // Default config for all screens
     headerMode: 'none',
     title: 'Main',
-    initialRouteName: 'VideoStack',
+
+    initialRouteName: 'mainStack',
 })
