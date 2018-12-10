@@ -40,7 +40,7 @@ export default class VideoCallOrgnizer extends Component {
                             resizeMode="cover"
                             shouldPlay
                             isLooping
-                            style={{width: '100%', height: '100%',}}
+                            style={{width: width, height: height,}}
                         />
                     </View>
 
